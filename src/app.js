@@ -18,6 +18,8 @@ App = {
         // App.web3.eth.getAccounts
          let a  = await (App.web3.eth.getAccounts());
          App.account = a[0];
+         App.fromAccount = a[1];
+         //App.web3.eth.defaultAccount = App.account;
     },
     loadContract: async()=>{
         //create a javascript version of the smart contract
@@ -45,6 +47,13 @@ App = {
   
       // Update loading state
       App.setLoading(false)
+    },
+
+    createTask: async()=>{
+        App.setLoading(true)
+        const content = $("#newTask").val();
+        await App.todoList.createTask(content,{from: App.fromAccount})
+        window.location.reload();
     },
 
     renderTasks: async () => {

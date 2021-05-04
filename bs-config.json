@@ -6,6 +6,9 @@
       ],
       "routes": {
         "/vendor": "./node_modules"
+      },
+      "middleware":{
+          
       }
     }
   }
